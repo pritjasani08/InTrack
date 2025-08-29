@@ -1,0 +1,106 @@
+/* Base */
+:root{
+  --bg: #0b1020;
+  --card: #121834;
+  --muted: #8b95b7;
+  --text: #e8ecff;
+  --primary: #6e9bff;
+  --primary-strong: #4a7df8;
+  --accent: #7ef0c1;
+  --danger: #ff6b6b;
+}
+*{box-sizing:border-box}
+html,body{height:100%}
+body{
+  margin:0;
+  font-family: Inter, system-ui, -apple-system, Segoe UI, Roboto, Arial, "Noto Sans", "Apple Color Emoji", "Segoe UI Emoji";
+  background: radial-gradient(1200px 800px at 80% -10%, rgba(110,155,255,.25), transparent 70%),
+              radial-gradient(1000px 700px at -10% 10%, rgba(126,240,193,.2), transparent 60%),
+              var(--bg);
+  color: var(--text);
+}
+/* Layout */
+#app{min-height:100vh; display:flex; align-items:center; justify-content:center; padding:24px}
+.container{width:100%; max-width:1120px}
+.card{background: linear-gradient(180deg, rgba(255,255,255,0.04), rgba(255,255,255,0.02)); border:1px solid rgba(255,255,255,0.08); border-radius:16px; box-shadow: 0 10px 30px rgba(0,0,0,0.3);}
+.glass{backdrop-filter: blur(10px)}
+
+/* Buttons */
+.btn{display:inline-flex; align-items:center; justify-content:center; gap:10px; padding:12px 18px; border-radius:12px; border:1px solid transparent; color:var(--text); cursor:pointer; transition: all .2s ease; font-weight:600}
+.btn-primary{background: linear-gradient(135deg, var(--primary), var(--primary-strong)); box-shadow: 0 6px 20px rgba(78,118,255,.35)}
+.btn-primary:hover{transform: translateY(-1px); filter:brightness(1.05)}
+.btn-outline{background: transparent; border-color: rgba(255,255,255,0.15)}
+.btn-outline:hover{background: rgba(255,255,255,0.06)}
+.btn-danger{background: linear-gradient(135deg, #ff7d7d, var(--danger)); box-shadow: 0 6px 20px rgba(255,107,107,.35)}
+
+/* Inputs */
+.field{display:flex; flex-direction:column; gap:8px}
+.input{width:100%; padding:12px 14px; border-radius:12px; border:1px solid rgba(255,255,255,0.12); background: rgba(255,255,255,0.04); color:var(--text); outline:none; transition: all .15s ease}
+.input:focus{border-color: var(--primary); box-shadow: 0 0 0 4px rgba(78,118,255,.15)}
+.label{font-size:14px; color:var(--muted)}
+.row{display:grid; grid-template-columns:1fr; gap:14px}
+@media(min-width:720px){.row-2{grid-template-columns:1fr 1fr}}
+
+/* Header */
+.appbar{display:flex; align-items:center; justify-content:space-between; gap:16px; padding:16px 20px; border-bottom:1px solid rgba(255,255,255,0.06)}
+.brand{display:flex; align-items:center; gap:12px; font-weight:800; letter-spacing:.3px}
+.brand .dot{width:10px; height:10px; border-radius:50%; background:var(--accent); box-shadow: 0 0 0 6px rgba(126,240,193,.15)}
+
+/* Grid */
+.grid{display:grid; gap:16px}
+@media(min-width:960px){.grid-cols-2{grid-template-columns:2fr 1fr}}
+
+/* Calendar and clock placeholders */
+.calendar{height:320px; border-radius:12px; background: linear-gradient(180deg, rgba(255,255,255,.05), rgba(255,255,255,.03)); border:1px dashed rgba(255,255,255,.12); display:flex; align-items:center; justify-content:center; color:var(--muted)}
+.clock{height:120px; border-radius:12px; background: linear-gradient(180deg, rgba(255,255,255,.05), rgba(255,255,255,.03)); border:1px dashed rgba(255,255,255,.12); display:flex; align-items:center; justify-content:center; color:var(--muted)}
+
+/* Notifications */
+.cards{display:grid; grid-template-columns:1fr; gap:12px}
+@media(min-width:720px){.cards{grid-template-columns:1fr 1fr}}
+.note{padding:14px; border-radius:12px; background: rgba(255,255,255,0.05); border:1px solid rgba(255,255,255,0.08)}
+
+/* Hero */
+.hero{padding:36px; text-align:center}
+.title{font-size:clamp(28px, 3.6vw, 40px); font-weight:800; line-height:1.1; margin:0}
+.subtitle{color:var(--muted); margin:10px 0 28px}
+.cta{display:flex; flex-direction:column; gap:12px; align-items:center; justify-content:center}
+@media(min-width:640px){.cta{flex-direction:row}}
+
+/* Sections */
+.section{padding:20px}
+
+/* Modals */
+.modal-overlay{position:fixed; inset:0; background: rgba(0,0,0,0.55); display:flex; align-items:center; justify-content:center; padding:20px; opacity:0; pointer-events:none; transition:opacity .2s ease}
+.modal-overlay.open{opacity:1; pointer-events:auto}
+.modal{width:100%; max-width:560px; border-radius:14px; background: linear-gradient(180deg, rgba(15,20,40,1), rgba(15,20,40,.96)); border:1px solid rgba(255,255,255,0.08); transform: translateY(10px); transition: transform .2s ease}
+.modal.open{transform: translateY(0)}
+.modal-header{display:flex; align-items:center; justify-content:space-between; padding:14px 16px; border-bottom:1px solid rgba(255,255,255,0.06)}
+.modal-body{padding:16px}
+
+/* Dropdown */
+.dropdown{position:relative}
+.menu{position:absolute; right:0; top:calc(100% + 8px); background: #121834; border:1px solid rgba(255,255,255,0.08); border-radius:12px; overflow:hidden; min-width:180px; box-shadow:0 10px 30px rgba(0,0,0,.4); display:none}
+.menu.open{display:block}
+.menu button{width:100%; padding:10px 12px; text-align:left; background:transparent; border:0; color:var(--text); cursor:pointer}
+.menu button:hover{background: rgba(255,255,255,.06)}
+
+/* QR placeholder */
+.qr{width:220px; height:220px; border-radius:12px; border:1px dashed rgba(255,255,255,.18); background: repeating-linear-gradient(45deg, rgba(255,255,255,.08) 0px, rgba(255,255,255,.08) 2px, transparent 2px, transparent 6px)}
+
+/* Avatar */
+.avatar{width:36px; height:36px; border-radius:50%; background: linear-gradient(135deg, var(--primary), var(--accent)); display:flex; align-items:center; justify-content:center; color:#0b1020; font-weight:800}
+
+/* Toast */
+.toast{position:fixed; bottom:20px; right:20px; background:#121834; color:var(--text); padding:12px 14px; border-radius:12px; border:1px solid rgba(255,255,255,0.08); box-shadow:0 6px 24px rgba(0,0,0,.4); opacity:0; transform: translateY(8px); transition: all .2s}
+.toast.show{opacity:1; transform: translateY(0)}
+
+/* Chips / tabs */
+.tabs{display:flex; gap:10px; flex-wrap:wrap}
+.chip{padding:10px 12px; border-radius:999px; border:1px solid rgba(255,255,255,.12); color:var(--text); cursor:pointer; background:rgba(255,255,255,.03)}
+.chip.active{border-color: var(--primary); box-shadow:0 0 0 3px rgba(78,118,255,.18)}
+
+/* Forms */
+form{display:flex; flex-direction:column; gap:14px}
+.help{font-size:12px; color:var(--muted)}
+
+
